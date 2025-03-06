@@ -112,8 +112,34 @@ public class BattleShip {
       @param trackingGrid The player's tracking grid to update.
      */
     static void playerTurn(char[][] opponentGrid, char[][] trackingGrid) {
-        //todo
+        boolean validshot = false;
+        while(!validshot){
+            System.out.println("Enter your shot :");
+            String input = scanner.nextLine().toUpperCase();
+            if(!isValidInput(input)){
+                System.out.println("invalid input .try again...");
+                continue;
+            }
+            int row = input.charAt(0) - 'A';
+            int col = Integer.parseInt(input.substring(1)) -1 ;
+
+            if (trackingGrid[row][col]  != WATER){
+                System.out.println("you already shot there. try again...");
+                continue;
+            }
+            if (opponentGrid[row][col] == SHIP){
+                System.out.println("Hit !");
+                trackingGrid[row][col] = HIT;
+                opponentGrid[row][col] = HIT;
+            } else{
+                System.out.println("MISS");
+                trackingGrid[row][col] = MISS;
+                opponentGrid[row][col] = MISS;
+            }
+            validshot =true;
+        }
     }
+
 
     /**
       Checks if the game is over by verifying if all ships are sunk.
@@ -121,8 +147,7 @@ public class BattleShip {
       @return true if the game is over (all ships are sunk), false otherwise.
      */
     static boolean isGameOver() {
-        //todo
-        return false;
+        return allShipsSunk(player1Grid) || allShipsSunk(player2Grid);
     }
 
     /**
@@ -132,7 +157,12 @@ public class BattleShip {
       @return true if all ships are sunk, false otherwise.
      */
     static boolean allShipsSunk(char[][] grid) {
-        //todo
+        for (char[] row : grid){
+            for(char cell: row){
+                if( cell == SHIP)
+                    return false;
+            }
+        }
         return true;
     }
 
