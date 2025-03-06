@@ -234,6 +234,18 @@ public class BattleShip {
       @param grid The tracking grid to print.
      */
     static void printGrid(char[][] grid) {
-        //todo
+        System.out.println("    ");
+        for(int i=1 ; i <= GRID_SIZE; i++ ){
+            System.out.print("  " + i);
+        }
+        System.out.println();
+
+        for(int row=0 ; row < GRID_SIZE ; row++){
+            System.out.print((char) ('A' + row)  + "  ");
+            for(int col = 0 ; col < GRID_SIZE ; col++){
+                System.out.print( grid[row][col] + "  ");
+            }
+            System.out.println();   //next line
+        }
     }
 }
