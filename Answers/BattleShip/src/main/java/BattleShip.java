@@ -6,6 +6,14 @@ import java.util.Scanner;
  */
 public class BattleShip {
 
+
+    //adding more final variables
+    static final char WATER = '~';
+    static final char SHIP = 'S';
+    static final char HIT = 'X';
+    static final char MISS = 'O';
+    static final int[] SHIP_SIZE ={ 5 ,4 ,3 ,3 ,2};
+
     // Grid size for the game
     static final int GRID_SIZE = 10;
 
