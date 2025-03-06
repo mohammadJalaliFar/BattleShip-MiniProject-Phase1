@@ -122,7 +122,18 @@ public class BattleShip {
       @return true if the ship can be placed at the specified location, false otherwise.
      */
     static boolean canPlaceShip(char[][] grid, int row, int col, int size, boolean horizontal) {
-        //todo
+        if (horizontal) {
+            if (col + size > GRID_SIZE) return false;
+
+            for (int i = 0; i < size; i++) {
+                if (grid[row][col + 1] != WATER) return false;
+            }
+        }   else{
+            if (row + size > GRID_SIZE) return false;
+            for (int i = 0; i < size; i++) {
+                if (grid[row + i][col] != WATER) return false;
+            }
+        }
         return true;
     }
 
