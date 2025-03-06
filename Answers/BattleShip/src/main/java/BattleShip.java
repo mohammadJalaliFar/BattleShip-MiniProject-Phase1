@@ -206,7 +206,24 @@ public class BattleShip {
       @return true if the input is in the correct format, false otherwise.
      */
     static boolean isValidInput(String input) {
-        //todo
+
+        if (input ==null || input.length() < 2 ){
+            return false;
+        }
+        char firstChar = Character.toUpperCase(input.charAt(0));
+        if( firstChar < 'A' || firstChar > 'j' ){
+            return false;
+        }
+
+        try{
+            int number = Integer.parseInt(input.substring(1));
+            if(number < 1 || number > 10){
+                return false;
+            }
+        }   catch( NumberFormatException e ){
+            return false;
+        }
+
         return true;
     }
 
